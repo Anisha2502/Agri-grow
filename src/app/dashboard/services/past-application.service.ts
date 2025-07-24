@@ -4,13 +4,13 @@ import { Observable, of } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class PastApplicationService {
-  private BASE_URL = 'http://localhost:8080/api/dashboard';
+  private BASE_URL = 'https://agro-backend-ms-f2dechbuaggncfdf.centralindia-01.azurewebsites.net';
 
   constructor(private http: HttpClient) {}
 
 
   getPastApplications(farmerId: number): Observable<any[]> {
-    // return this.http.get<any[]>(`${this.BASE_URL}/active/${farmerId}`);
+    // return this.http.get<any[]>(`${this.BASE_URL}/api/application/past/${farmerId}`);
     const mockApplications = [
       {
         applicationDate: '2025-08-10',

@@ -79,7 +79,7 @@ export class StartApplicationComponent implements OnInit {
     });
 
 
-    this.http.post('http://localhost:8080/api/applications', formData).subscribe({
+    this.http.post('https://agro-backend-ms-f2dechbuaggncfdf.centralindia-01.azurewebsites.net/api/application/save', formData).subscribe({
       next: () => {
         //alert('Application submitted successfully!');
         this.snackBar.open('Application submitted successfully!', 'Close', {

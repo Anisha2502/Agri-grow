@@ -4,12 +4,12 @@ import { Observable, of } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class WalletService {
-  private BASE_URL = 'http://localhost:8080/api/dashboard';
+  private BASE_URL = 'https://agro-backend-ms-f2dechbuaggncfdf.centralindia-01.azurewebsites.net';
 
   constructor(private http: HttpClient) {}
 
   getTransactionHistory(farmerId: number): Observable<any[]> {
-    // return this.http.get<any[]>(`${this.BASE_URL}/active/${farmerId}`);
+    // return this.http.get<any[]>(`${this.BASE_URL}/api/application/balance/${farmerId}`);
     const mockApplications = [
       { date: '2025-07-01', cropType: 'Rice', season: 'Kharif', amount: 5000, credit: 20 },
       { date: '2025-06-10', cropType: 'Wheat', season: 'Kharif', amount: 3000, credit: 20 },

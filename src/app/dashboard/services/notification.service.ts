@@ -4,12 +4,12 @@ import { Observable, of } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class NotificationService {
-  private BASE_URL = 'http://localhost:8080/api/dashboard';
+  private BASE_URL = 'https://agro-backend-ms-f2dechbuaggncfdf.centralindia-01.azurewebsites.net';
 
   constructor(private http: HttpClient) {}
 
   getNotificationsForUser(farmerId: number): Observable<any[]> {
-    // return this.http.get<any[]>(`${this.BASE_URL}/active/${farmerId}`);
+    // return this.http.get<any[]>(`${this.BASE_URL}/api/farmer/notifications/${farmerId}`);
     const mockApplications = [
       {
       type: 'verification',
