@@ -1,0 +1,106 @@
+<div class="register-wrapper">
+  <mat-card class="register-card">
+    <h2>🌿 Empowering Farmers with Growth Opportunities</h2>
+
+    <form [formGroup]="registerForm" (ngSubmit)="submitForm()">
+      <div class="form-row">
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Full Name</mat-label>
+          <input matInput formControlName="fullName" />
+          <mat-error *ngIf="(f['fullName'].touched || submitted) && f['fullName'].errors?.['required']">
+            Full name is required
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Mobile Number</mat-label>
+          <input matInput formControlName="mobile" maxlength="10" />
+          <mat-error *ngIf="(f['mobile'].touched || submitted) && f['mobile'].errors?.['required']">
+            Mobile number is required
+          </mat-error>
+          <mat-error *ngIf="(f['mobile'].touched || submitted) && f['mobile'].errors?.['pattern']">
+            Enter a valid 10-digit number
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form-row">
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Language Preference</mat-label>
+          <mat-select formControlName="language">
+            <mat-option *ngFor="let lang of languages" [value]="lang">{{ lang }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="(f['language'].touched || submitted) && f['language'].errors?.['required']">
+            Select language
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form-row">
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Land Area (in acres)</mat-label>
+          <input matInput type="number" formControlName="landArea" />
+          <mat-error *ngIf="(f['landArea'].touched || submitted) && f['landArea'].errors?.['required']">
+            Land area required
+          </mat-error>
+          <mat-error *ngIf="(f['landArea'].touched || submitted) && f['landArea'].errors?.['min']">
+            Must be greater than 0
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Village / Location</mat-label>
+          <input matInput formControlName="location" />
+          <mat-error *ngIf="(f['location'].touched || submitted) && f['location'].errors?.['required']">
+            Location required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form-row file-row">
+        <div class="file-section">
+          <label>Upload Land Ownership Proof</label><br />
+          <input type="file" (change)="onFileChange($event)" />
+          <mat-error *ngIf="submitted && f['ownershipProof'].errors?.['required']">
+            Upload is required
+          </mat-error>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Password</mat-label>
+          <input matInput [type]="hidePass ? 'password' : 'text'" formControlName="password" />
+          <button mat-icon-button matSuffix (click)="hidePass = !hidePass" type="button">
+            <mat-icon>{{ hidePass ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+          <mat-error *ngIf="(f['password'].touched || submitted) && f['password'].errors?.['required']">
+            Password required
+          </mat-error>
+          <mat-error *ngIf="(f['password'].touched || submitted) && f['password'].errors?.['minlength']">
+            Min 4 characters
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Confirm Password</mat-label>
+          <input matInput [type]="hideConfirm ? 'password' : 'text'" formControlName="confirmPassword" />
+          <button mat-icon-button matSuffix (click)="hideConfirm = !hideConfirm" type="button">
+            <mat-icon>{{ hideConfirm ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+          <mat-error *ngIf="(f['confirmPassword'].touched || submitted) && registerForm.errors?.['mismatch']">
+            Passwords do not match
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <button mat-raised-button color="primary" type="submit" class="submit-btn" [disabled]="registerForm.invalid">
+        Register
+      </button>
+
+      <div class="login-redirect">
+        Already have an account? <a routerLink="/login">Login</a>
+      </div>
+    </form>
+  </mat-card>
+</div>

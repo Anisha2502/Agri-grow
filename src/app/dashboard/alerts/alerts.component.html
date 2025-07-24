@@ -1,0 +1,20 @@
+<div class="reminder-container">
+  <h2 class="page-title">⏰ Crop Cycle Reminders & Alerts</h2>
+
+  <div class="reminder-list">
+    <div *ngFor="let r of reminders" class="reminder-card" [ngClass]="r.status.toLowerCase()">
+      <h4>{{ r.message }}</h4>
+      <p><strong>Due Date:</strong> {{ r.dueDate }}</p>
+      <p class="status">{{ r.status }}</p>
+    </div>
+  </div>
+
+  <button mat-raised-button color="primary" class="cta-button" (click)="startNewApplication()">
+    🚀 Start New Application
+  </button>
+
+  <mat-card class="calendar-section">
+    <h3>📅 Crop Planning Calendar</h3>
+    <mat-calendar></mat-calendar>
+  </mat-card>
+</div>

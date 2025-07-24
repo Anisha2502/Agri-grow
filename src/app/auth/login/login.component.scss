@@ -1,0 +1,66 @@
+.login-wrapper {
+  background: url('/assets/images/farmer_login.png') no-repeat center center;
+  background-size: cover;
+  height: 100vh;
+  overflow: hidden; 
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 2rem 10rem; 
+  box-sizing: border-box;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  background: rgba(255, 255, 255, 0.12);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 100, 0, 0.25);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #fff;
+  text-align: center;
+}
+
+
+.login-card h2 {
+  color: #44914a;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  font-size: 1.4rem;
+}
+
+mat-form-field {
+  margin-bottom: 1rem;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.mt-2 {
+  margin-top: 1rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+a {
+  color: #bbf7d0;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.logo-container {
+  position: absolute;
+  top: 10px;
+  left: 32px;
+  z-index: 10;
+
+  img {
+    height: 150px;
+    width: auto;
+  }
+}
