@@ -55,7 +55,9 @@ export class RegisterComponent {
   getLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((pos) => {
-        const coords = `${pos.coords.latitude.toFixed(4)}, ${pos.coords.longitude.toFixed(4)}`;
+        const coords = `${pos.coords.latitude.toFixed(
+          4
+        )}, ${pos.coords.longitude.toFixed(4)}`;
         this.registerForm.patchValue({ location: coords });
       });
     }
@@ -90,18 +92,19 @@ export class RegisterComponent {
 
     // Simulate registration (replace with actual backend call)
     setTimeout(() => {
+      localStorage.setItem('farmerId', '1');
+      localStorage.setItem('farmerName', "Ram Prasad");
       this.snackBar.open('Registration successful!', 'Close', {
         duration: 3000,
-        panelClass: ['success-snackbar']
+        panelClass: ['success-snackbar'],
       });
       this.router.navigate(['/dashboard']);
     }, 1000);
   }
-}
-
 
   // submitForm() {
   //   this.submitted = true;
+
   //   if (this.registerForm.valid && this.selectedFile) {
   //     const formData = new FormData();
   //     formData.append('fullName', this.f['fullName'].value);
@@ -111,20 +114,26 @@ export class RegisterComponent {
   //     formData.append('location', this.f['location'].value);
   //     formData.append('password', this.f['password'].value);
 
-  //     this.http.post('http://localhost:8080/api/auth/register', formData).subscribe(
-  //       () => {
-  //         this.snackBar.open('Registration successful!', 'Close', {
-  //           duration: 3000,
-  //           panelClass: ['success-snackbar']
-  //         });
-  //         this.router.navigate(['/dashboard']);
-  //       },
-  //       () => {
-  //         this.snackBar.open('Registration failed. Try again.', 'Close', {
-  //           duration: 3000
-  //         });
-  //       }
-  //     );
+  //     this.http
+  //       .post<any>('http://localhost:8080/api/auth/register', formData)
+  //       .subscribe(
+  //         (response) => {
+  //           localStorage.setItem('farmerId', response.id);
+  //           localStorage.setItem('farmerName', response.name);
+
+  //           this.snackBar.open('Registration successful!', 'Close', {
+  //             duration: 3000,
+  //             panelClass: ['success-snackbar'],
+  //           });
+
+  //           this.router.navigate(['/dashboard']);
+  //         },
+  //         (error) => {
+  //           this.snackBar.open('Registration failed. Try again.', 'Close', {
+  //             duration: 3000,
+  //           });
+  //         }
+  //       );
   //   }
   // }
-
+}
