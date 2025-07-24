@@ -12,11 +12,11 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatProgressBarModule } from '@angular/material/progress-bar'; 
 import { MatTableModule } from '@angular/material/table';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { MainComponent } from './component/main/main.component';
 import { HistoryComponent } from './history/history.component';
-import { AlertsComponent } from './alerts/alerts.component';
 import { WalletComponent } from './wallet/wallet.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { MatSelectModule } from '@angular/material/select';
@@ -29,7 +29,6 @@ import { StartApplicationComponent } from './start-application/start-application
   declarations: [
     MainComponent,
     HistoryComponent,
-    AlertsComponent,
     WalletComponent,
     NotificationsComponent,
     ActiveApplicationsComponent,
@@ -51,7 +50,8 @@ import { StartApplicationComponent } from './start-application/start-application
     MatNativeDateModule,
     MatProgressBarModule,
     MatTableModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatExpansionModule
   ]
 })
 export class DashboardModule { }

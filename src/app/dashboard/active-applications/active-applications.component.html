@@ -1,66 +1,53 @@
 <div class="dashboard-container">
   <div class="header-row">
-    <h2>Active Applications</h2>
-    <button mat-raised-button color="primary"  routerLink="/dashboard/start-application">Start New Application</button>
+    <h2>Open Applications</h2>
+    <button mat-raised-button color="primary" routerLink="/dashboard/start-application">Start New Application</button>
   </div>
 
   <ng-container *ngIf="activeApplications.length > 0; else noApplications">
     <mat-card *ngFor="let app of activeApplications" class="application-card">
       <div class="application-header">
-        <h3>{{ app.season }} {{ app.year }}</h3>
+        <h4><strong>Season:</strong> {{ app.season }}</h4>
         <span class="status">{{ app.status }}</span>
       </div>
 
-      <p><strong>NGO:</strong> {{ app.ngoName }}</p>
-      <p><strong>Verification Date:</strong> {{ app.verificationDate }}</p>
-
-      <div *ngIf="app.requestedDocs?.length" class="requested-docs">
-        <strong>Requested Documents:</strong>
-        <ul>
-          <li *ngFor="let doc of app.requestedDocs">{{ doc }}</li>
-        </ul>
-      </div>
+      <p><strong>Application Date:</strong> {{ app.applicationDate }}</p>
+      <p><strong>NGO:</strong> GreenField Trust </p>
 
       <div class="parcel-table">
-        <table mat-table [dataSource]="app.parcels" class="mat-elevation-z1">
+        <table mat-table [dataSource]="[app]" class="mat-elevation-z1">
           <ng-container matColumnDef="crop">
             <th mat-header-cell *matHeaderCellDef> Crop </th>
-            <td mat-cell *matCellDef="let parcel"> {{ parcel.crop }} </td>
+            <td mat-cell *matCellDef="let element"> {{ element.cropType }} </td>
           </ng-container>
 
           <ng-container matColumnDef="area">
-            <th mat-header-cell *matHeaderCellDef> Area (acres) </th>
-            <td mat-cell *matCellDef="let parcel"> {{ parcel.area }} </td>
+            <th mat-header-cell *matHeaderCellDef> Area (hectare) </th>
+            <td mat-cell *matCellDef="let element"> {{ element.area }} </td>
           </ng-container>
 
           <ng-container matColumnDef="carbon">
             <th mat-header-cell *matHeaderCellDef> Estimated Credits </th>
-            <td mat-cell *matCellDef="let parcel"> {{ parcel.estimatedCredits ?? 'pending' }} </td>
+            <td mat-cell *matCellDef="let element"> {{ element.estimatedCredits ?? 'pending' }} </td>
           </ng-container>
 
           <ng-container matColumnDef="ngo">
             <th mat-header-cell *matHeaderCellDef> Verified Credits </th>
-            <td mat-cell *matCellDef="let parcel">
-              {{ parcel.verifiedCredits ?? 'Pending' }}
+            <td mat-cell *matCellDef="let element">
+              {{ element.verifiedCredits ?? 'Pending' }}
             </td>
           </ng-container>
 
-          <ng-container matColumnDef="sold">
-            <th mat-header-cell *matHeaderCellDef> Sold Credits </th>
-            <td mat-cell *matCellDef="let parcel">
-              {{ parcel.soldCredits ?? 'Pending' }}
+          <ng-container matColumnDef="verification">
+            <th mat-header-cell *matHeaderCellDef> Verification Date </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.verificationDate ?? 'Pending' }}
             </td>
           </ng-container>
 
-          <tr mat-header-row *matHeaderRowDef="['crop', 'area', 'carbon', 'ngo', 'sold']"></tr>
-          <tr mat-row *matRowDef="let row; columns: ['crop', 'area', 'carbon', 'ngo', 'sold']"></tr>
+          <tr mat-header-row *matHeaderRowDef="['crop', 'area', 'carbon', 'ngo', 'verification']"></tr>
+          <tr mat-row *matRowDef="let row; columns: ['crop', 'area', 'carbon', 'ngo', 'verification']"></tr>
         </table>
-      </div>
-
-      <div class="actions">
-        <button mat-stroked-button>Upload Documents</button>
-        <button mat-stroked-button>Track Progress</button>
-        <button mat-flat-button color="primary">View Details</button>
       </div>
     </mat-card>
   </ng-container>

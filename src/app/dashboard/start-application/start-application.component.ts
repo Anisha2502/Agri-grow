@@ -76,15 +76,7 @@ export class StartApplicationComponent implements OnInit {
       formData.append(`parcels[${index}].till`, parcel.till);
       formData.append(`parcels[${index}].treesPlanted`, parcel.treesPlanted);
       formData.append(`parcels[${index}].durationMonths`, parcel.durationMonths);
-
-      if (parcel.file) {
-        formData.append(`parcels[${index}].file`, parcel.file);
-      }
     });
-
-    formData.forEach((value, key) => {
-  console.log(`${key}:`, value);
-});
 
 
     this.http.post('http://localhost:8080/api/applications', formData).subscribe({

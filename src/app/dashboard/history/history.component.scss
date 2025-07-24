@@ -1,0 +1,84 @@
+.dashboard-container {
+  padding: 2rem;
+
+  .header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+
+    h2 {
+    margin: 0
+  }
+  }
+
+  .application-card {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    border-left: 6px solid #4CAF50;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+    .application-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.8rem;
+
+      h3 {
+        margin: 0;
+        font-size: 1.3rem;
+      }
+
+      .complete {
+        font-weight: bold;
+        color: #388E3C;
+        background: #E8F5E9;
+        padding: 4px 10px;
+        border-radius: 4px;
+      }
+      .reject {
+        font-weight: bold;
+        color: #ffffff;
+        background: #b31d1d;
+        padding: 4px 10px;
+        border-radius: 4px;
+      }
+    }
+
+    .requested-docs {
+      background: #fffde7;
+      padding: 0.5rem;
+      margin: 1rem 0;
+      border-radius: 4px;
+
+      ul {
+        margin: 0;
+        padding-left: 1.2rem;
+      }
+    }
+
+    .parcel-table {
+      margin: 1rem 0;
+      overflow-x: auto;
+    }
+
+    .actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+
+      button {
+        flex: 1;
+        min-width: 160px;
+      }
+    }
+  }
+
+  .empty-card {
+    padding: 2rem;
+    text-align: center;
+    font-size: 1.1rem;
+    // color: #666;
+  }
+}

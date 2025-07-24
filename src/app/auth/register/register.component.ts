@@ -87,7 +87,6 @@ export class RegisterComponent {
     formData.append('landArea', this.registerForm.value.landArea);
     formData.append('location', this.registerForm.value.location);
     formData.append('password', this.registerForm.value.password);
-    formData.append('ownershipProof', this.selectedFile);
 
     // Simulate registration (replace with actual backend call)
     setTimeout(() => {
@@ -111,7 +110,6 @@ export class RegisterComponent {
   //     formData.append('landArea', this.f['landArea'].value);
   //     formData.append('location', this.f['location'].value);
   //     formData.append('password', this.f['password'].value);
-  //     formData.append('ownershipProof', this.selectedFile);
 
   //     this.http.post('http://localhost:8080/api/auth/register', formData).subscribe(
   //       () => {

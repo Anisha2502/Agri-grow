@@ -1,1 +1,74 @@
-<p>history works!</p>
+<div class="dashboard-container">
+  <div class="header-row">
+    <h2>Past Applications</h2>
+    <button mat-raised-button color="primary" routerLink="/dashboard/start-application">Start New Application</button>
+  </div>
+
+  <ng-container *ngIf="pastApplications.length > 0; else noApplications">
+    <mat-card *ngFor="let app of pastApplications" class="application-card">
+      <div class="application-header">
+        <h4><strong>Season:</strong> {{ app.season }}</h4>
+        <span [ngClass]="{ 'complete': app.status === 'Completed', 'reject': app.status === 'Rejected' }">{{ app.status }}</span>
+      </div>
+
+      <p><strong>Application Date:</strong> {{ app.applicationDate }}</p>
+      <p><strong>NGO:</strong> GreenField Trust </p>
+
+      <div class="parcel-table">
+        <table mat-table [dataSource]="[app]" class="mat-elevation-z1">
+          <ng-container matColumnDef="crop">
+            <th mat-header-cell *matHeaderCellDef> Crop </th>
+            <td mat-cell *matCellDef="let element"> {{ element.cropType }} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="area">
+            <th mat-header-cell *matHeaderCellDef> Area (hectare) </th>
+            <td mat-cell *matCellDef="let element"> {{ element.area }} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="carbon">
+            <th mat-header-cell *matHeaderCellDef> Estimated Credits </th>
+            <td mat-cell *matCellDef="let element"> {{ element.estimatedCredits ?? 'pending' }} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="ngo">
+            <th mat-header-cell *matHeaderCellDef> Verified Credits </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.verifiedCredits ?? 'Pending' }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="verification">
+            <th mat-header-cell *matHeaderCellDef> Verification Date </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.verificationDate ?? 'Pending' }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="amount">
+            <th mat-header-cell *matHeaderCellDef> Credited Amount </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.creditedAmount ?? 'Pending' }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="sellingDate">
+            <th mat-header-cell *matHeaderCellDef> Selling Date </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.sellingDate ?? 'Pending' }}
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="['crop', 'area', 'carbon', 'ngo', 'verification', 'amount', 'sellingDate']"></tr>
+          <tr mat-row *matRowDef="let row; columns: ['crop', 'area', 'carbon', 'ngo', 'verification', 'amount', 'sellingDate']"></tr>
+        </table>
+      </div>
+    </mat-card>
+  </ng-container>
+
+  <ng-template #noApplications>
+    <mat-card class="empty-card">
+      <p>No past applications. Start a new one to begin your journey!</p>
+    </mat-card>
+  </ng-template>
+</div>

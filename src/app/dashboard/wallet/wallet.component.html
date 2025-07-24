@@ -13,15 +13,6 @@
     </div>
   </div>
 
-  <div class="withdraw-section">
-    <h3>Withdraw Money</h3>
-    <input type="number" placeholder="Enter amount" [(ngModel)]="withdrawalAmount" />
-    <div class="withdraw-buttons">
-      <button (click)="withdraw('Bank')">Withdraw to Bank</button>
-      <button (click)="withdraw('UPI')">Withdraw to UPI</button>
-    </div>
-  </div>
-
   <div class="transactions">
     <h3>Transaction History</h3>
     <table>
@@ -29,19 +20,17 @@
         <tr>
           <th>Date</th>
           <th>Description</th>
+          <th>Credits</th>
           <th>Amount</th>
-          <th>Status</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let tx of transactions">
           <td>{{ tx.date }}</td>
-          <td>{{ tx.description }}</td>
+          <td> Credit Sale - {{ tx.cropType }} {{ tx.season }}</td>
+          <td>{{tx.credit}}</td>
           <td [ngClass]="{ 'credit': tx.amount > 0, 'debit': tx.amount < 0 }">
             {{ tx.amount | currency:'INR' }}
-          </td>
-          <td>
-            <span class="status" [ngClass]="tx.status.toLowerCase()">{{ tx.status }}</span>
           </td>
         </tr>
       </tbody>

@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { NotificationService } from '../services/notification.service';
 
 interface Notification {
-  type: 'stage' | 'ngo' | 'payment' | 'reminder';
+  type: string;
   message: string;
   timestamp: string;
-  read: boolean;
 }
 
 @Component({
@@ -12,37 +12,35 @@ interface Notification {
   templateUrl: './notifications.component.html',
   styleUrls: ['./notifications.component.scss']
 })
-export class NotificationsComponent {
-  allNotifications: Notification[] = [
-    {
-      type: 'stage',
-      message: '✅ Your verification is complete.',
-      timestamp: '2025-07-18 10:45 AM',
-      read: false
-    },
-    {
-      type: 'payment',
-      message: '💰 ₹2,500 has been credited to your bank account.',
-      timestamp: '2025-07-17 03:15 PM',
-      read: true
-    },
-    {
-      type: 'reminder',
-      message: '⏰ Submit your documents for the Kharif 2025 season.',
-      timestamp: '2025-07-16 08:00 AM',
-      read: false
-    },
-    {
-      type: 'ngo',
-      message: '👩‍🌾 NGO SevaKisan has messaged: "Site visit scheduled tomorrow."',
-      timestamp: '2025-07-15 05:30 PM',
-      read: true
-    }
-  ];
+export class NotificationsComponent implements OnInit{
 
   filter = 'all';
   pageSize = 3;
   currentPage = 0;
+  farmerId: number = 0;
+  allNotifications: Notification[] = [];
+
+  constructor(private notificationService: NotificationService) {}
+
+  ngOnInit(): void {
+    const storedId = localStorage.getItem('farmerId');
+    this.farmerId = storedId ? parseInt(storedId) : 0;
+
+    if (this.farmerId) {
+      this.fetchNotifications();
+    }
+  }
+
+  fetchNotifications() {
+    this.notificationService.getNotificationsForUser(this.farmerId).subscribe(
+      (data) => {
+        this.allNotifications = data;
+      },
+      (err) => {
+        console.error('Failed to load notifications', err);
+      }
+    );
+  }
 
   get filteredNotifications(): Notification[] {
     let list = this.filter === 'all' ? this.allNotifications :
@@ -54,11 +52,6 @@ export class NotificationsComponent {
   changeFilter(value: string) {
     this.filter = value;
     this.currentPage = 0;
-  }
-
-  markAsRead(index: number) {
-    const globalIndex = this.getGlobalIndex(index);
-    this.allNotifications[globalIndex].read = true;
   }
 
   deleteNotification(index: number) {

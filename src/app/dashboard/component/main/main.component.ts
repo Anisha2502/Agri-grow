@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ApplicationStateService } from '../../services/application-state.service';
 
 @Component({
   selector: 'app-main',
@@ -7,7 +6,6 @@ import { ApplicationStateService } from '../../services/application-state.servic
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit{
-constructor(public appState: ApplicationStateService) {}
 
 farmerName = '';
 
