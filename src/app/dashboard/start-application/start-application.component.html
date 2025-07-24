@@ -1,155 +1,15 @@
-<!-- <div class="start-app-container">
-  <h2>📥 Start New Application</h2>
-
-  <div class="season-selection">
-  <mat-form-field appearance="outline">
-    <mat-label>Season</mat-label>
-    <mat-select [(ngModel)]="season" name="season">
-      <mat-option *ngFor="let s of seasons" [value]="s">{{ s }}</mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <mat-form-field appearance="outline">
-    <mat-label>Year</mat-label>
-    <input matInput [(ngModel)]="year" name="year" type="number" />
-  </mat-form-field>
-</div>
-
-
-  <div class="parcels-section">
-    <h3>🧱 Parcel Information</h3>
-    <button class="add-btn" (click)="addParcel()">➕ Add Parcel</button>
-
-    <div *ngFor="let parcel of parcels; let i = index" class="parcel-card">
-
-      <label>Crop</label>
-      <select [(ngModel)]="parcel.crop">
-        <option *ngFor="let crop of cropOptions" [value]="crop">{{ crop }}</option>
-      </select>
-
-      <label>Area (in acre)</label>
-      <input type="number" [(ngModel)]="parcel.area" />
-
-      <div class="ml-section">
-        <h4>📊 ML Carbon Estimation Questions</h4>
-        <ng-container *ngFor="let question of mlQuestions">
-          <div *ngIf="question.type === 'number'">
-            <label>{{ question.label }}</label>
-            <input type="number" [(ngModel)]="parcel[question.key]" />
-          </div>
-          <div *ngIf="question.type === 'select'">
-            <label>{{ question.label }}</label>
-            <select [(ngModel)]="parcel[question.key]">
-              <option *ngFor="let option of question.options" [value]="option">{{ option }}</option>
-            </select>
-          </div>
-          <div *ngIf="question.type === 'toggle'">
-            <label>
-              <input type="checkbox" [(ngModel)]="parcel[question.key]" /> {{ question.label }}
-            </label>
-          </div>
-        </ng-container>
-      </div>
-
-      <label>Upload Land Image/Document</label>
-<input type="file" (change)="onFileUpload($event, parcel.parcelId)" />
-
-      <button class="remove-btn" (click)="removeParcel(i)">❌ Remove Parcel</button>
-    </div>
-  </div>
-
-  <button class="submit-btn" (click)="submitApplication()">🚀 Submit Application</button>
-</div> -->
-
-
-<!-- <div class="start-app-container">
-  <h2>📥 Start New Application</h2>
-
-   Season & Start Date -->
-  <!-- <div class="season-selection">
-    <mat-form-field appearance="outline">
-      <mat-label>Season</mat-label>
-      <mat-select [(ngModel)]="season" name="season">
-        <mat-option *ngFor="let s of seasons" [value]="s">{{ s }}</mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field appearance="outline">
-      <mat-label>Start Date</mat-label>
-      <input matInput [matDatepicker]="picker" [(ngModel)]="startDate" name="startDate" />
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker startView="multi-year" [startAt]="today"></mat-datepicker>
-    </mat-form-field>
-  </div> -->
-
-  <!-- Parcel Info -->
-  <!-- <div class="parcels-section">
-    <h3>🧱 Parcel Information</h3>
-    <button mat-stroked-button color="primary" (click)="addParcel()">➕ Add Parcel</button>
-
-    <mat-card *ngFor="let parcel of parcels; let i = index" class="parcel-card">
-
-      <mat-form-field appearance="fill">
-        <mat-label>Crop</mat-label>
-        <mat-select [(ngModel)]="parcel.crop" name="crop{{ i }}">
-          <mat-option *ngFor="let crop of cropOptions" [value]="crop">{{ crop }}</mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <mat-form-field appearance="fill">
-        <mat-label>Area (in acres)</mat-label>
-        <input matInput type="number" [(ngModel)]="parcel.area" name="area{{ i }}" />
-      </mat-form-field>
-
-      <div class="ml-section">
-        <h4>📊 ML Carbon Estimation Questions</h4>
-
-        <div *ngFor="let question of mlQuestions">
-          <mat-form-field appearance="fill" *ngIf="question.type === 'number'">
-            <mat-label>{{ question.label }}</mat-label>
-            <input matInput type="number" [(ngModel)]="parcel[question.key]" name="{{ question.key + i }}" />
-          </mat-form-field>
-
-          <mat-form-field appearance="fill" *ngIf="question.type === 'select'">
-            <mat-label>{{ question.label }}</mat-label>
-            <mat-select [(ngModel)]="parcel[question.key]" name="{{ question.key + i }}">
-              <mat-option *ngFor="let opt of question.options" [value]="opt">{{ opt }}</mat-option>
-            </mat-select>
-          </mat-form-field>
-
-          <mat-checkbox *ngIf="question.type === 'toggle'" [(ngModel)]="parcel[question.key]" name="{{ question.key + i }}">
-            {{ question.label }}
-          </mat-checkbox>
-        </div>
-      </div>
-
-      <label>Upload Land Image/Document</label>
-      <input type="file" (change)="onFileUpload($event, parcel.parcelId)" />
-
-      <button mat-icon-button color="warn" (click)="removeParcel(i)" aria-label="Remove Parcel">
-        <mat-icon>delete</mat-icon>
-      </button>
-    </mat-card>
-  </div>
-
-  <button mat-raised-button color="accent" class="submit-btn" (click)="submitApplication()">
-    🚀 Submit Application
-  </button>
-</div> --> 
-
-
 <div class="start-app-container">
   <h2>📥 Start New Application</h2>
 
   <div class="season-selection">
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="outline" class="form-field">
       <mat-label>Season</mat-label>
       <mat-select [(ngModel)]="season" name="season">
         <mat-option *ngFor="let s of seasons" [value]="s">{{ s }}</mat-option>
       </mat-select>
     </mat-form-field>
 
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="outline" class="form-field">
       <mat-label>Start Date</mat-label>
       <input matInput [matDatepicker]="picker" [(ngModel)]="startDate" name="startDate" />
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -159,47 +19,51 @@
 
   <div class="parcels-section">
     <h3>🧱 Parcel Information</h3>
-    <button class="add-btn" (click)="addParcel()">➕ Add Parcel</button>
+    <button mat-stroked-button color="primary" (click)="addParcel()">➕ Add Parcel</button>
+  
 
-    <div *ngFor="let parcel of parcels; let i = index" class="parcel-card">
-      <label>Crop</label>
-      <select [(ngModel)]="parcel.crop">
-        <option *ngFor="let crop of cropOptions" [value]="crop">{{ crop }}</option>
-      </select>
+    <div *ngFor="let parcel of parcels; let i = index" class="parcel-card mat-elevation-z2">
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Crop</mat-label>
+        <mat-select [(ngModel)]="parcel.cropType" name="crop-{{ i }}">
+          <mat-option *ngFor="let crop of cropOptions" [value]="crop">{{ crop }}</mat-option>
+        </mat-select>
+      </mat-form-field>
 
-      <label>Area (in acre)</label>
-      <input type="number" [(ngModel)]="parcel.area" />
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Area (in Hectare)</mat-label>
+        <input matInput type="number" [(ngModel)]="parcel.areaHa" name="area-{{ i }}" />
+      </mat-form-field>
 
       <div class="ml-section">
-        <h4>📊 ML Carbon Estimation Questions</h4>
+        <h4>📊 Carbon Estimation Questions</h4>
 
         <ng-container *ngFor="let question of mlQuestions">
-          <div *ngIf="question.type === 'number'">
-            <label>{{ question.label }}</label>
-            <input type="number" [(ngModel)]="parcel[question.key]" />
-          </div>
-          <div *ngIf="question.type === 'select'">
-            <label>{{ question.label }}</label>
-            <select [(ngModel)]="parcel[question.key]">
-              <option *ngFor="let option of question.options" [value]="option">{{ option }}</option>
-            </select>
-          </div>
-          <div *ngIf="question.type === 'toggle'">
-            <label>
-              <input type="checkbox" [(ngModel)]="parcel[question.key]" />
-              {{ question.label }}
-            </label>
-          </div>
+          <mat-form-field *ngIf="question.type === 'number'" appearance="outline" class="form-field">
+            <mat-label>{{ question.label }}</mat-label>
+            <input matInput type="number" [(ngModel)]="parcel[question.key]" name="{{ question.key }}-{{ i }}" />
+          </mat-form-field>
+
+          <mat-form-field *ngIf="question.type === 'select'" appearance="outline" class="form-field">
+            <mat-label>{{ question.label }}</mat-label>
+            <mat-select [(ngModel)]="parcel[question.key]" name="{{ question.key }}-{{ i }}">
+              <mat-option *ngFor="let option of question.options" [value]="option">{{ option }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
         </ng-container>
       </div>
 
-      <label>Upload Land Image/Document</label>
-      <input type="file" (change)="onFileUpload($event, parcel.parcelId)" />
+      <div class="file-upload">
+        <label>Upload Land Image/Document </label>
+        <input type="file" (change)="onFileUpload($event, parcel.parcelId)" />
+      </div>
 
-      <button class="remove-btn" (click)="removeParcel(i)">❌ Remove Parcel</button>
+      <button mat-icon-button color="warn" (click)="removeParcel(i)">
+        <mat-icon>delete</mat-icon>
+      </button>
     </div>
   </div>
 
-  <button class="submit-btn" (click)="submitApplication()">🚀 Submit Application</button>
+  <button mat-raised-button color="primary" class="submit-btn" (click)="submitApplication()">🚀 Submit Application</button>
 </div>
-

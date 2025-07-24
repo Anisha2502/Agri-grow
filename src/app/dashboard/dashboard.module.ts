@@ -11,6 +11,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatProgressBarModule } from '@angular/material/progress-bar'; 
 import { MatTableModule } from '@angular/material/table';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { MainComponent } from './component/main/main.component';
@@ -49,7 +50,8 @@ import { StartApplicationComponent } from './start-application/start-application
     MatDatepickerModule,
     MatNativeDateModule,
     MatProgressBarModule,
-    MatTableModule
+    MatTableModule,
+    MatSnackBarModule
   ]
 })
 export class DashboardModule { }
