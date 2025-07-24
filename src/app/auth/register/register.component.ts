@@ -115,7 +115,7 @@ export class RegisterComponent {
   //     formData.append('password', this.f['password'].value);
 
   //     this.http
-  //       .post<any>('https://agro-backend-ms-f2dechbuaggncfdf.centralindia-01.azurewebsites.net//api/farmer/register', formData)
+  //       .post<any>('https://agro-backend-ms-f2dechbuaggncfdf.centralindia-01.azurewebsites.net/api/farmer/register', formData)
   //       .subscribe(
   //         (response) => {
   //           localStorage.setItem('farmerId', response.id);
