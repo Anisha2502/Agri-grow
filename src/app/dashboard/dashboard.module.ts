@@ -21,7 +21,6 @@ import { WalletComponent } from './wallet/wallet.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { MatSelectModule } from '@angular/material/select';
 import { ActiveApplicationsComponent } from './active-applications/active-applications.component';
-import { ProfileComponent } from './profile/profile.component';
 import { StartApplicationComponent } from './start-application/start-application.component';
 
 
@@ -32,7 +31,6 @@ import { StartApplicationComponent } from './start-application/start-application
     WalletComponent,
     NotificationsComponent,
     ActiveApplicationsComponent,
-    ProfileComponent,
     StartApplicationComponent
   ],
   imports: [

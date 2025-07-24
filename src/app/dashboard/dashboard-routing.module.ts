@@ -5,7 +5,6 @@ import { HistoryComponent } from './history/history.component';
 import { WalletComponent } from './wallet/wallet.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { ActiveApplicationsComponent } from './active-applications/active-applications.component';
-import { ProfileComponent } from './profile/profile.component';
 import { StartApplicationComponent } from './start-application/start-application.component';
 
 const routes: Routes = [
@@ -16,7 +15,6 @@ const routes: Routes = [
       { path: 'history', component: HistoryComponent },
       { path: 'wallet', component: WalletComponent },
       { path: 'notifications', component: NotificationsComponent },
-      { path: 'profile', component: ProfileComponent },
       { path: 'start-application', component: StartApplicationComponent }
     ],
   },
